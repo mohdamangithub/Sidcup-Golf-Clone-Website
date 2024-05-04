@@ -1,0 +1,634 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Gilroy";
+  color: #fff;
+}
+*::selection {
+  background-color: #fff;
+  color: #95c11e;
+}
+body::-webkit-scrollbar {
+  display: block;
+  width: 8px;
+  background-color: #000;
+  border-left: 3px solid #95c11e;
+}
+body::-webkit-scrollbar-thumb {
+  border-radius: 50px;
+  background-color: #fff;
+}
+html,
+body {
+  height: 100%;
+  /* perspective: 800px; */
+  width: 100%;
+  /* overflow-x: hidden; */
+}
+#nav {
+  width: 100%;
+  height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 60px;
+  padding: 0 120px;
+  /* background-color: black; */
+  position: fixed;
+  z-index: 99;
+}
+#nav img {
+  height: 75px;
+}
+a {
+  text-decoration: none;
+  font-weight: 600;
+}
+#cursor {
+  width: 20px;
+  height: 20px;
+  background-color: #95c11e;
+  border-radius: 50%;
+  position: fixed;
+  z-index: 99;
+  transition: all cubic-bezier(0.19, 1, 0.22, 1) 0.2s;
+}
+#cursor-blur {
+  width: 500px;
+  height: 500px;
+  background-color: #96c11e2b;
+  border-radius: 50%;
+  position: fixed;
+  z-index: 9;
+  transition: all cubic-bezier(0.19, 1, 0.22, 1) 0.2s;
+  filter: blur(40px);
+}
+video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: fixed;
+  z-index: -1;
+}
+#main {
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.326);
+  overflow-x: hidden;
+}
+#page1 {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+  height: 100vh;
+  width: 100%;
+  text-align: center;
+  z-index: 10;
+  /* background-color: red; */
+}
+#page1 h1 {
+  position: relative;
+  font-size: 140px;
+  font-family: 900;
+}
+#page1 h1::before {
+  content: "EAT. DRINK. PLAY.";
+  position: absolute;
+  color: black;
+  z-index: -1;
+  top: -5px;
+  left: -5px;
+  -webkit-text-stroke: 1px #95c11e;
+}
+#page1 h2 {
+  font-size: 30px;
+  font-family: 800;
+}
+#page1 p {
+  font-size: 19px;
+  font-family: 500;
+  width: 40%;
+}
+#page1 #arrow {
+  position: absolute;
+  left: -2%;
+  bottom: 0%;
+  height: 190px;
+  width: 190px;
+  background-color: transparent;
+  border: 2px solid #95c11e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all ease 0.5s;
+}
+#page1 #arrow:hover {
+  scale: 0.4;
+  background-color: #95c11e;
+}
+#page1 #arrow i:hover #arrow {
+  scale: 0.4;
+  background-color: #95c11e;
+}
+#page1 #arrow i {
+  font-size: 50px;
+  font-weight: 100;
+}
+#page2 {
+  min-height: 100vh;
+  width: 100%;
+  z-index: 10;
+}
+#scroller {
+  /* background-color: red; */
+  white-space: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  position: relative;
+  z-index: 10;
+}
+#scroller::-webkit-scrollbar {
+  display: none;
+}
+#scroller-in {
+  display: inline-block;
+  white-space: nowrap;
+  animation-name: scroll;
+  animation-duration: 30s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+#scroller h4 {
+  display: inline-block;
+  font-size: 120px;
+  font-family: 900;
+  margin-right: 40px;
+  color: transparent;
+  transition: all linear 0.5s;
+  -webkit-text-stroke: 2px #95c11e;
+}
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+#scroller h4:hover {
+  color: #95c11e;
+}
+#about-us {
+  width: 100%;
+  height: 40vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 90px;
+  position: relative;
+}
+#about-us img {
+  width: 220px;
+  height: 220px;
+  border-radius: 20px;
+  object-fit: cover;
+}
+#about-us-in {
+  width: 50%;
+  text-align: center;
+}
+#about-us-in h3 {
+  font-size: 54px;
+  font-weight: 800;
+  margin-bottom: 30px;
+}
+#about-us-in p {
+  font-size: 17px;
+  line-height: 26px;
+}
+#cards-container {
+  height: 60vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 70px;
+  position: relative;
+  z-index: 10;
+  /* background-color: red; */
+}
+#cards-container > img {
+  position: absolute;
+  left: 10%;
+  top: -2%;
+  width: 200px;
+}
+.card {
+  width: 24%;
+  height: 80%;
+  /* background-color: blue; */
+  border-radius: 20px;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  transition: all ease 0.6s;
+}
+#card1 {
+  background-image: url(https://eiwgew27fhz.exactdn.com/wp-content/uploads/2023/02/home-toptracer.jpg?strip=all&lossy=1&sharp=1&ssl=1);
+}
+#card2 {
+  background-image: url(https://eiwgew27fhz.exactdn.com/wp-content/uploads/2023/02/hero-4.jpg?strip=all&lossy=1&sharp=1&ssl=1);
+}
+#card3 {
+  background-image: url(https://eiwgew27fhz.exactdn.com/wp-content/uploads/2023/02/home-lessons.jpg?strip=all&lossy=1&sharp=1&fit=1024%2C682&ssl=1);
+}
+.overlay {
+  height: 100%;
+  width: 100%;
+  background-color: #95c11e;
+  padding: 30px;
+  padding-top: 100px;
+  opacity: 0;
+  transition: all ease 0.6s;
+}
+.overlay #arrow {
+  position: absolute;
+  right: -50%;
+  top: -50%;
+  height: 120px;
+  width: 120px;
+  background-color: transparent;
+  /* border: 2px solid #95c11e; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all linear 0.7s;
+  border: 3px solid black;
+}
+.overlay > #arrow i {
+  color: #000;
+  font-size: 37px;
+}
+.overlay > #arrow:hover {
+  background-color: white;
+}
+.overlay:hover #arrow {
+  right: -6%;
+  top: -9%;
+}
+.overlay h4 {
+  color: #000;
+  font-size: 35px;
+  font-weight: 800;
+  white-space: nowrap;
+  margin-bottom: 20px;
+}
+.overlay p {
+  color: #000;
+  font-size: 18px;
+}
+.card:hover .overlay {
+  opacity: 1;
+}
+.card:hover {
+  transform: rotate3d(-1, 1, 0, 20deg);
+}
+#green-div {
+  width: 100%;
+  height: 45vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(to left bottom, #1da237, #ace022);
+}
+#green-div img {
+  height: 100%;
+  width: 14%;
+  object-fit: cover;
+}
+#green-div h4 {
+  width: 45%;
+  font-size: 30px;
+  line-height: 50px;
+  text-align: center;
+  color: #000;
+  font-weight: 800;
+}
+#page3 {
+  width: 100%;
+  height: 80vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background-color: red; */
+}
+#page3 > p {
+  font-size: 30px;
+  font-weight: 700;
+  width: 45%;
+  line-height: 45px;
+  text-align: center;
+}
+#page3 img {
+  position: absolute;
+  height: 60px;
+}
+#page3 #colon1 {
+  left: 20%;
+  top: 25%;
+}
+#page3 #colon2 {
+  bottom: 30%;
+  right: 20%;
+}
+#page4 {
+  width: 100%;
+  height: 60vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 70px;
+  overflow-x: hidden;
+  padding: 0 90px;
+}
+#page4 h1 {
+  font-size: 95px;
+  position: absolute;
+  top: 5%;
+  color: #000;
+  font-weight: 900;
+  -webkit-text-stroke: 2px #fff;
+}
+.elem {
+  height: 45%;
+  width: 27%;
+  overflow: hidden;
+  border-radius: 20px;
+  position: relative;
+}
+.elem h2 {
+  height: 100%;
+  width: 100%;
+  background-color: #95c11e;
+  display: flex;
+  color: #000;
+  font-size: 30px;
+  font-weight: 1000;
+  letter-spacing: 1px;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  z-index: 10;
+  transition: all ease 0.5s;
+}
+.elem img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  scale: 1.1;
+  transition: all ease 0.5s;
+}
+.elem:hover h2 {
+  color: #fff;
+  background-color: transparent;
+}
+.elem:hover img {
+  scale: 1;
+}
+#footer {
+  width: 100%;
+  height: 40vh;
+  position: relative;
+  background: linear-gradient(to left bottom, #119f3a, #ace022);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 150px;
+  padding: 0 100px;
+}
+#footer img {
+  position: absolute;
+  left: 0;
+  height: 100%;
+  z-index: 0;
+}
+#f1 img {
+  position: relative;
+  height: 100px;
+}
+#f1,
+#f2,
+#f3,
+#f4 {
+  width: fit-content;
+  position: relative;
+  z-index: 2;
+}
+#f2 h3 {
+  font-size: 30px;
+  white-space: nowrap;
+  color: #000;
+  font-weight: 900;
+  margin-bottom: 8px;
+}
+#f3 h3 {
+  font-size: 30px;
+  white-space: nowrap;
+  color: #000;
+  font-weight: 900;
+  margin-bottom: 8px;
+}
+#f4 h4 {
+  font-size: 18px;
+  white-space: nowrap;
+  color: #000;
+  font-weight: 600;
+  line-height: 20px;
+  margin-bottom: 8px;
+}
+#f4 h4 b {
+  color: #000;
+  font-weight: 900;
+  font-size: 20px;
+  letter-spacing: 1.1px;
+}
+#page2-1 {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 70px;
+  padding: 0 100px;
+  position: relative;
+  transition: all ease 0.8s;
+}
+#page2-1 img {
+  position: absolute;
+  left: 10.2%;
+  top: 70%;
+  width: 200px;
+}
+
+#left-img {
+  width: 650px;
+  height: 450px;
+  /* background-color: #95c11e; */
+  background-image: url(https://eiwgew27fhz.exactdn.com/wp-content/uploads/2023/02/hero-5.jpg?strip=all&lossy=1&sharp=1&ssl=1);
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+  z-index: 9;
+  transition: all ease 0.8s;
+}
+#right-txt {
+  transition: all ease 0.8s;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+  width: 500px;
+  height: 450px;
+  /* background-color: #95c11e; */
+  padding-left: 10px;
+  z-index: 9;
+}
+#right-txt h1 {
+  font-size: 58px;
+}
+#right-txt p {
+  font-size: 24px;
+}
+#right-txt button {
+  padding: 20px 50px;
+  /* font-size: 20px; */
+  border-radius: 40px;
+  border: 2px solid #95c11e;
+  margin-top: 20px;
+  background-color: transparent;
+  letter-spacing: 2px;
+  font-weight: 550;
+  position: relative;
+  overflow: hidden;
+  z-index: 9999;
+}
+#right-txt button:hover {
+  color: #000;
+  font-weight: 650;
+}
+#right-txt button::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #95c11e;
+  border-radius: 20px;
+  color: #000;
+  bottom: -100%;
+  left: 0;
+  transition: all cubic-bezier(0.19, 1, 0.22, 1) 0.7s;
+  z-index: -1;
+}
+#right-txt button:hover::before {
+  bottom: 0;
+}
+#page2-2 {
+  min-height: 30vh;
+  width: 100%;
+  z-index: 10;
+  /* background-color: #95c11e; */
+  position: relative;
+}
+#page2-2 img {
+  width: 250px;
+  height: 250px;
+  border-radius: 20px;
+  object-fit: cover;
+  margin-right: 40px;
+  transition: all linear 0.5s;
+}
+.img-scroller {
+  margin-top: 50px;
+  transform-origin: 0 0;
+  rotate: -4deg;
+  /* background-color: red; */
+  white-space: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  position: relative;
+  z-index: 10;
+}
+#insta {
+  transform-origin: 0 0;
+  rotate: -4deg;
+  position: absolute;
+  top: 83%;
+  right: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  gap: 10px;
+}
+#insta i {
+  font-weight: 1000;
+}
+#insta h5 {
+  font-weight: 1000;
+}
+.btns {
+  width: 8%;
+  /* background-color: red; */
+  position: absolute;
+  left: 27%;
+  bottom: 13%;
+  height: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  transition: all linear 1s;
+}
+.dot {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  /* transition: all ease 0.5s; */
+}
+#dot1 {
+  border: 3px solid #95c11e;
+}
+#dot2 {
+  border: none;
+}
+#dot3 {
+  border: none;
+}
+#dot-in-1 {
+  background-color: #95c11e;
+}
+#dot-in-2 {
+  background-color: #fff;
+}
+#dot-in-3 {
+  background-color: #fff;
+}
+.dot-in {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #95c11e;
+  transition: all ease 0.5s;
+}
